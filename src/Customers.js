@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './Customers.css';
 import CustomerCard from './CustomerCard.js';
 import CustomerForm from './CustomerForm.js';
+import "./index.css";
 
 function Customers() {
 
@@ -92,14 +93,20 @@ function Customers() {
 
      return (
         <>
+        <div className='btn-panel'>
             <div id='buttonPanel' className="row mt-2">
+                <div className='btn-group'>
                 <button className="btn btn-primary" type="button" onClick={addClick}>Add a Customer</button>
+               </div>
+               <div className='btn-group'>
                 <select name="level" onChange={fetchByLevel}>
                     <option value="" >Get Customers by Level</option>
                     <option value="Gold">Gold</option>
                     <option value="Silver">Silver</option>
                     <option value="Bronze">Bronze</option>
                 </select>
+                </div>
+                <div className='btn-group'>
                 <select name="state" onChange={fetchByState}>
                     <option value="">Get Customers by State</option>
                     <option value="AL">Alabama</option>
@@ -154,10 +161,13 @@ function Customers() {
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
+                </div>
+            </div>
             </div>
             {error && <div className="alert alert-danger">{error}</div>}
             <div>
                 <h1 id='customerTitle'>Customers</h1>
+                <div className='table-div' >
                 <table id='customers'>
                     <tr>
                         <th>First Name</th>
@@ -172,6 +182,7 @@ function Customers() {
                         {customers.map(r => <CustomerCard key={r.customerId} customer={r} notify={notify} />)}
                     </tbody>
                 </table>
+                </div>
             </div>
         </>
     )
